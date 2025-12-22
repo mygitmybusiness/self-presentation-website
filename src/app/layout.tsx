@@ -32,7 +32,7 @@ export default function RootLayout({
         <Navbar />
         <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 sm:p-20">
           <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-7xl mx-auto px-2 w-full">
               {children}
             </div>
           </main>

@@ -2,10 +2,10 @@ import SquaredShowcase from "@/components/SquaredShowcase";
 
 export default function Technologies() {
   return (
-    <div className="p-4 md:p-8 w-full">
+    <div className="p-1 w-full">
       <div>
         <SquaredShowcase
-          color="#1e293b"          // slate-800
+          color="#1e293b" // slate-800
           shadowColor="rgba(0,0,0,0.25)"
           highlightColor="#1e293b"
           cols={4}

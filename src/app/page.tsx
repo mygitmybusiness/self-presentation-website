@@ -1,10 +1,7 @@
-
-import Sketch from "@/components/Sketch";
-import Cube3D from "@/components/Cube3D";
-import IsoCubeGrid from "@/components/IsoCubeGrid";
+import { Landing } from "@/components/homepage/Landing";
 
 export default function Home() {
   return (
-    <Sketch />
+    <Landing />
   );
 }

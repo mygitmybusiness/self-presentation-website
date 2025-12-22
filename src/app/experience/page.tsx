@@ -2,6 +2,7 @@
 
 import { VerticalTabItem, VerticalTabs } from "@/components/VerticalTabs";
 import TimelineVerticalSlider, { TimelineItem } from "@/components/TimelineVerticalSlider";
+import CompanyAccordion from "@/components/experience/CompanyAccordion";
 
 export default function Experience() {
   const demoItems: VerticalTabItem[] = [
@@ -54,8 +55,8 @@ export default function Experience() {
   ];
 
   return (
-    <div className="p-4 md:p-8 w-full">
-      <VerticalTabs items={demoItems} />
+    <div className="p-1 w-full">
+      {/* <VerticalTabs items={demoItems} />
       <div className="mx-auto max-w-5xl px-4 py-16">
         <h1 className="mb-8 text-3xl font-bold">Roadmap</h1>
         <TimelineVerticalSlider
@@ -64,7 +65,8 @@ export default function Experience() {
           height="28rem"
           onChange={(i, item) => console.log("Active:", i, item)}
         />
-      </div>
+      </div> */}
+      <CompanyAccordion className="mt-4"/>
     </div>
   );
 }
