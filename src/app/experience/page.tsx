@@ -1,8 +1,8 @@
 "use client";
 
 import { VerticalTabItem, VerticalTabs } from "@/components/VerticalTabs";
-import TimelineVerticalSlider, { TimelineItem } from "@/components/TimelineVerticalSlider";
 import CompanyAccordion from "@/components/experience/CompanyAccordion";
+import TimelineRoadmap from "@/components/experience/TimelineRoadmap";
 
 export default function Experience() {
   const demoItems: VerticalTabItem[] = [
@@ -54,6 +54,12 @@ export default function Experience() {
     { id: "2019", title: "EPAM", subtitle: "2019", content: "Scaled infra, added SSO, SOC2, and enterprise features." },
   ];
 
+  const items: TimelineItem[] = [
+    { id: "epam-2012", year: 2012, title: "EPAM", subtitle: "Frontend Engineer", description: "...", tags: ["JS", "HTML", "CSS"] },
+    { id: "cloudflight-2023", year: 2023, title: "Cloudflight", subtitle: "Senior FE", description: "...", tags: ["React", "TS", "A11y"] },
+    { id: "luxmed-2025", year: 2025, title: "LUX MED", subtitle: "Senior FE", description: "Appointment Search / Comparison Table", tags: ["Next.js", "TS", "WCAG"] },
+  ];
+
   return (
     <div className="p-1 w-full">
       {/* <VerticalTabs items={demoItems} />
@@ -66,8 +72,55 @@ export default function Experience() {
           onChange={(i, item) => console.log("Active:", i, item)}
         />
       </div> */}
-      <CompanyAccordion className="mt-4"/>
+      <CompanyAccordion className="mt-4" />
+      <TimelineRoadmap
+        subtitle={
+          <>
+            A meticulously crafted journey from fundamentals to expertise.{" "}
+            <span className="text-[#000] dark:text-[#fafcfc] font-semibold">
+              Master the language that powers the web.
+            </span>
+          </>
+        }
+        milestones={[
+          {
+            id: "m1",
+            indexLabel: "01",
+            eyebrow: "Foundation",
+            title: "Intro & Setup",
+            description:
+              "Install development tools, configure your environment, and understand the JavaScript ecosystem.",
+            tone: "light",
+          },
+          {
+            id: "m2",
+            indexLabel: "02",
+            eyebrow: "Core Concepts",
+            title: "JavaScript Basics",
+            description:
+              "Variables, data types, operators, control flow, functions, and scope.",
+            tone: "dark",
+          },
+          {
+            id: "m3",
+            indexLabel: "03",
+            eyebrow: "Interactive",
+            title: "DOM Manipulation",
+            description:
+              "Select, modify, and create HTML elements dynamically. Handle events and user interactions.",
+            tone: "light",
+          },
+          {
+            id: "m4",
+            indexLabel: "04",
+            eyebrow: "Modern Syntax",
+            title: "ES6+ Features",
+            description:
+              "Arrow functions, destructuring, template literals, classes, modules, and spread operator.",
+            tone: "accent",
+          },
+        ]}
+      />
     </div>
   );
 }
-
