@@ -302,8 +302,8 @@ const CompanyAccordion: React.FC<CompanyAccordionProps> = ({
                         </ul>
                       )}
                     </div>
-                    <div className="lg:w-1/2 min-h-[500px]">
-                      <img className="h-full object-cover" src="https://images.ctfassets.net/4cd45et68cgf/eQf2abKG7Z8OWYN6UdE3X/8b9957676f823e2a655a4dfbb72b4724/CompanyNews.jpeg" alt="netflix" />
+                    <div className="mt-4 lg:mt-0 lg:w-1/2">
+                      <img className="min-h-[300px] lg:min-h-[500px] h-full object-cover" src="https://images.ctfassets.net/4cd45et68cgf/eQf2abKG7Z8OWYN6UdE3X/8b9957676f823e2a655a4dfbb72b4724/CompanyNews.jpeg" alt="netflix" />
                     </div>
                   </div>
                 </div>

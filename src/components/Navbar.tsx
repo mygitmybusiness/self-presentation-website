@@ -34,7 +34,7 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/experience", label: "Experience" },
     { href: "/technologies", label: "Technologies" },
-    { href: "/contact", label: "Contacts" },
+    { href: "/contacts", label: "Contacts" },
   ];
 
   // Lock scroll + focus first link + close on Esc
