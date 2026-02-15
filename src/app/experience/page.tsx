@@ -76,50 +76,50 @@ export default function Experience() {
       <TimelineRoadmap
         subtitle={
           <>
-            A meticulously crafted journey from fundamentals to expertise.{" "}
+            My career.{" "}
             <span className="text-[#000] dark:text-[#fafcfc] font-semibold">
-              Master the language that powers the web.
+              In a nutshell.
             </span>
           </>
         }
         milestones={[
           {
-            id: "m1",
-            indexLabel: "01",
-            eyebrow: "Foundation",
-            title: "Intro & Setup",
+            id: "m4",
+            indexLabel: "04",
+            eyebrow: "Most Recent",
+            title: "Senior Frontend Engineer — LUX MED (Poland)",
             description:
-              "Install development tools, configure your environment, and understand the JavaScript ecosystem.",
-            tone: "light",
-          },
-          {
-            id: "m2",
-            indexLabel: "02",
-            eyebrow: "Core Concepts",
-            title: "JavaScript Basics",
-            description:
-              "Variables, data types, operators, control flow, functions, and scope.",
-            tone: "dark",
+              "Building and optimizing large-scale customer-facing flows (appointment search, plan comparison). Strong focus on WCAG/a11y, performance, and reliable delivery in a cross-functional team.",
+            tone: "accent",
           },
           {
             id: "m3",
             indexLabel: "03",
-            eyebrow: "Interactive",
-            title: "DOM Manipulation",
+            eyebrow: "Previous",
+            title: "Frontend Engineer — Cloudflight",
             description:
-              "Select, modify, and create HTML elements dynamically. Handle events and user interactions.",
+              "Delivered modern web UIs and integrations across multiple projects. Worked end-to-end with design/QA/BE, improving UX, maintainability, and performance in production systems.",
+            tone: "dark",
+          },
+          {
+            id: "m2",
+            indexLabel: "02",
+            eyebrow: "2018 - 2019",
+            title: "Frontend Engineer — EPAM",
+            description:
+              "Built and maintained enterprise web applications, collaborating closely with distributed teams. Strengthened engineering fundamentals, code quality practices, and delivery discipline.",
             tone: "light",
           },
           {
-            id: "m4",
-            indexLabel: "04",
-            eyebrow: "Modern Syntax",
-            title: "ES6+ Features",
+            id: "m1",
+            indexLabel: "01",
+            eyebrow: "2012 - 2016",
+            title: "Early Career — Web Development Foundations",
             description:
-              "Arrow functions, destructuring, template literals, classes, modules, and spread operator.",
-            tone: "accent",
+              "Grew core skills in JavaScript/TypeScript, UI architecture, and shipping real features. Established habits around clean code, reusable components, and user-centered interfaces.",
+            tone: "light",
           },
-        ]}
+        ]}        
       />
     </div>
   );

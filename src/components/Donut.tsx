@@ -32,13 +32,13 @@ type DonutAsciiProps = {
  */
 export default function DonutAscii({
   className = "",
-  fps = 30,
+  fps = 40,
   width = 64,
   height = 64,
   scale = 0.16,
-  speed = 1,
+  speed = 1.5,
   color = "#fff",
-  withSurface = false,
+  withSurface = true,
 }: DonutAsciiProps) {
   const preRef = useRef<HTMLPreElement | null>(null);
 
@@ -66,7 +66,10 @@ export default function DonutAscii({
     const zbuf = new Float32Array(size);
 
     // shading ramp (classic donut)
-    const ramp = ".,-~:;=!*#$@";
+    const charsMap = ".,-~:;=!*#$@";
+    const charsMapReversed = [...charsMap].reverse().join("");
+    const rampStr = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? charsMap : charsMapReversed;
+    const ramp = Array.from(rampStr);
 
     // FPS cap
     const frameInterval = 1000 / Math.max(1, fps);
@@ -88,7 +91,7 @@ export default function DonutAscii({
     const K1 = (dims.w * 12) / (R1 + R2); // tuned scaling (was 500/(R1+R2) for fixed size)
 
     // step sizes (quality/perf knobs)
-    const stepJ = 0.12; // outer
+    const stepJ = 0.04; // outer
     const stepI = 0.03; // inner
 
     const loop = (t: number) => {
@@ -149,7 +152,8 @@ export default function DonutAscii({
 
           if (ooz > zbuf[idx]) {
             zbuf[idx] = ooz;
-            const shade = Math.min(ramp.length - 1, Math.floor(L * 8));
+            const lum = Math.max(0, Math.min(1, L));
+            const shade = Math.min(ramp.length - 1, Math.floor(lum * ramp.length));
             chars[idx] = ramp[shade] ?? ramp[0];
           }
         }
@@ -191,7 +195,7 @@ export default function DonutAscii({
             "rounded-2xl",
             "overflow-hidden",
             withSurface
-              ? "bg-[#fafcfc] text-[#2a2a2a] dark:bg-[#000] dark:text-[#e5e4e3]"
+              ? "text-[#2a2a2a] dark:bg-[#000] dark:text-[#e5e4e3]"
               : "bg-transparent",
           ].join(" ")}
         >
@@ -201,11 +205,11 @@ export default function DonutAscii({
               className={[
                 "select-none",
                 "leading-[0.95]",
-                "text-[12px] sm:text-[14px] md:text-[16px]",
-                "font-mono",
+                "font-bold text-[10px] sm:text-[12px] md:text-[14px]",
+                "font-mono text-black dark:text-white",
                 "whitespace-pre",
               ].join(" ")}
-              style={{ color }}
+              // style={{ color }}
             />
           </div>
         </div>

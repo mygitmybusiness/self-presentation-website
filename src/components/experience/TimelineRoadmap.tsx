@@ -1,3 +1,9 @@
+// ✅ FIX: no duplication on mobile
+// Idea: render card ONLY ONCE.
+// - Mobile: always render card in the right column (which is full-width on mobile)
+// - Desktop: render card either left OR right depending on `side`
+// This removes the `md:hidden` fallback that was duplicating left-side items on mobile.
+
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -6,27 +12,23 @@ type MilestoneTone = "light" | "dark" | "accent";
 
 export type TimelineMilestone = {
   id: string;
-  indexLabel: string; // "01"
-  eyebrow: string; // "Foundation"
-  title: string; // "Intro & Setup"
+  indexLabel: string;
+  eyebrow: string;
+  title: string;
   description: string;
-  side?: "left" | "right"; // optional; auto alternates on desktop
-  tone?: MilestoneTone; // optional; default "light"
+  side?: "left" | "right";
+  tone?: MilestoneTone;
 };
 
 type Props = {
   label?: string;
   headingTop?: string;
-  headingMain?: string; // "JavaScript"
-  headingSecondary?: string; // "Mastery"
-  headingSub?: string; // "Roadmap"
+  headingMain?: string;
+  headingSecondary?: string;
+  headingSub?: string;
   subtitle?: React.ReactNode;
-
   milestones: TimelineMilestone[];
-
   className?: string;
-
-  /** From which breakpoint we switch to 2-sided layout */
   splitAt?: "md" | "lg";
 };
 
@@ -83,11 +85,10 @@ function toneClasses(tone: MilestoneTone) {
 }
 
 export default function TimelineRoadmap({
-  label = "Learning Path",
   headingTop,
-  headingMain = "JavaScript",
-  headingSecondary = "Mastery",
-  headingSub = "Roadmap",
+  headingMain = "Companies",
+  headingSecondary = "I worked at",
+  headingSub = "2012 - 2025",
   subtitle,
   milestones,
   className,
@@ -103,19 +104,13 @@ export default function TimelineRoadmap({
   const isSplitLg = splitAt === "lg";
 
   const splitOn =
-    splitAt === "md"
-      ? "md:flex"
-      : splitAt === "lg"
-        ? "lg:flex"
-        : "md:flex";
-
-  const splitHideLeftOnMobile = splitAt === "md" ? "md:block" : "lg:block";
+    splitAt === "lg"
+      ? "lg:flex"
+      : "md:flex";
 
   const normalized = useMemo(() => {
     return milestones.map((m, idx) => {
-      const side =
-        m.side ??
-        (idx % 2 === 0 ? "left" : "right"); /* alternating default */
+      const side = m.side ?? (idx % 2 === 0 ? "left" : "right");
       const tone = m.tone ?? (idx % 3 === 1 ? "dark" : "light");
       return { ...m, side, tone };
     });
@@ -143,18 +138,17 @@ export default function TimelineRoadmap({
             setVisibleCount((prev) => Math.max(prev, i + 1));
           }, i * 90);
 
-          observer.unobserve(el);
+          observer.unobserve(entry.target);
         });
       },
       { threshold: 0.18, rootMargin: "0px 0px -120px 0px" }
     );
 
     cards.forEach((el) => observer.observe(el));
-
     return () => observer.disconnect();
   }, [normalized.length]);
 
-  // Update progress line height based on visible milestones
+  // Progress line
   useEffect(() => {
     const progressEl = progressRef.current;
     const container = listRef.current;
@@ -163,8 +157,6 @@ export default function TimelineRoadmap({
     const update = () => {
       const total = normalized.length || 1;
       const p = Math.max(0, Math.min(1, visibleCount / total));
-
-      // Use container height for stable behavior even if content shifts.
       const h = container.scrollHeight;
       progressEl.style.height = `${Math.round(h * p)}px`;
     };
@@ -187,7 +179,7 @@ export default function TimelineRoadmap({
     };
   }, [visibleCount, normalized.length]);
 
-  // Keyboard navigation (ArrowUp / ArrowDown)
+  // Keyboard navigation
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
@@ -201,9 +193,7 @@ export default function TimelineRoadmap({
       if (!items.length) return;
 
       const active = document.activeElement as HTMLElement | null;
-      const currentIndex = active
-        ? items.findIndex((x) => x === active)
-        : -1;
+      const currentIndex = active ? items.findIndex((x) => x === active) : -1;
 
       e.preventDefault();
 
@@ -226,15 +216,9 @@ export default function TimelineRoadmap({
   }, []);
 
   return (
-    <section
-      ref={rootRef}
-      className={cx(
-        className
-      )}
-    >
+    <section ref={rootRef} className={cx(className)}>
       {/* Header */}
       <header className="relative overflow-hidden">
-        {/* subtle dotted backdrop */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.08] dark:opacity-[0.06]">
           <div
             className="absolute inset-0"
@@ -248,16 +232,6 @@ export default function TimelineRoadmap({
 
         <div className="relative max-w-7xl mx-auto px-2 w-full py-16 md:py-24 text-center">
           <div className="space-y-7">
-            {label ? (
-              <div className="inline-flex items-center gap-2 rounded-full bg-[#000] text-[#fafcfc] dark:bg-[#fafcfc] dark:text-[#000] px-4 py-2 text-xs font-semibold tracking-[0.14em] uppercase">
-                <span
-                  className="inline-block h-1.5 w-1.5 rounded-full"
-                  style={{ backgroundColor: COLORS.accentA }}
-                />
-                {label}
-              </div>
-            ) : null}
-
             <div className="space-y-3">
               {headingTop ? (
                 <p className="text-sm tracking-wide text-[#2a2a2a]/70 dark:text-[#e5e4e3]/70">
@@ -296,7 +270,6 @@ export default function TimelineRoadmap({
             className={cx(
               "absolute left-1/2 -translate-x-1/2 w-px",
               "bg-[#e5e4e3] dark:bg-[#2a2a2a]",
-              "transition-[height] duration-700 ease-out",
               "top-0"
             )}
             style={{ height: "100%" }}
@@ -314,64 +287,53 @@ export default function TimelineRoadmap({
             }}
           />
 
-          <div className="space-y-14 md:space-y-20">
+          <div className="space-y-6">
             {normalized.map((m, idx) => {
               const t = toneClasses(m.tone);
               const isLeft = m.side === "left";
 
-              // On mobile: always right side (single column)
-              // On desktop: split left/right by side
+              // Left column: desktop only
               const leftCol = cx(
-                "w-full",
+                "hidden",
                 splitOn,
                 splitAt === "md"
                   ? "md:w-1/2 md:pr-10 md:text-right"
-                  : "lg:w-1/2 lg:pr-10 lg:text-right",
-                !isLeft &&
-                  (splitAt === "md"
-                    ? "md:opacity-0 md:pointer-events-none"
-                    : "lg:opacity-0 lg:pointer-events-none")
+                  : "lg:w-1/2 lg:pr-10 lg:text-right"
               );
 
+              // Right column: ALWAYS visible on mobile, half-width on desktop
               const rightCol = cx(
                 "w-full",
                 splitOn,
-                splitAt === "md" ? "md:w-1/2 md:pl-10" : "lg:w-1/2 lg:pl-10",
-                isLeft &&
-                  (splitAt === "md"
-                    ? "md:opacity-0 md:pointer-events-none"
-                    : "lg:opacity-0 lg:pointer-events-none")
+                splitAt === "md" ? "md:w-1/2 md:pl-10" : "lg:w-1/2 lg:pl-10"
               );
 
               const card = (
                 <div
                   className={cx(
-                    "rounded-2xl p-6 md:p-7",
-                    "transition-transform duration-300 ease-out",
-                    "focus-visible:outline-none",
-                    "shadow-none",
-                    "border",
+                    "rounded-2xl p-4 md:p-7 border",
                     t.card,
                     t.border,
-                    "will-change-transform"
+                    "transition-transform duration-300 ease-out will-change-transform"
                   )}
                 >
                   <div
                     className={cx(
                       "flex items-center gap-4 mb-5",
-                      isLeft ? "justify-end" : "justify-start"
+                      // align header on desktop; keep mobile left aligned
+                      isLeft ? "md:justify-end lg:justify-end" : "justify-start"
                     )}
                   >
                     <div
                       className={cx(
-                        "h-12 w-12 rounded-xl flex items-center justify-center font-bold text-lg",
+                        "min-h-12 min-w-12 rounded-xl flex items-center justify-center font-bold text-lg",
                         t.badgeWrap
                       )}
                     >
                       <span className={t.badgeText}>{m.indexLabel}</span>
                     </div>
 
-                    <div className={cx(isLeft ? "text-right" : "text-left")}>
+                    <div className={cx(isLeft ? "md:text-right lg:text-right" : "text-left")}>
                       <div
                         className={cx(
                           "text-[11px] font-semibold uppercase tracking-[0.18em]",
@@ -389,18 +351,6 @@ export default function TimelineRoadmap({
                   <p className={cx("text-base md:text-lg leading-relaxed", t.text)}>
                     {m.description}
                   </p>
-
-                  {/* tiny accent underline */}
-                  {/* <div className="mt-6 flex items-center gap-2 dark:text-white">
-                    <span
-                      className="px-4 rounded-full"
-                      style={{ backgroundColor: COLORS.accentA }}
-                    >What</span>
-                    <span
-                      className="px-4 rounded-full opacity-80"
-                      style={{ backgroundColor: COLORS.accentB }}
-                    >The</span>
-                  </div> */}
                 </div>
               );
 
@@ -411,11 +361,8 @@ export default function TimelineRoadmap({
                   data-index={idx}
                   tabIndex={0}
                   className={cx(
-                    "relative outline-none",
-                    "transition-opacity duration-500",
-                    "opacity-0",
-                    "data-[visible=true]:opacity-100",
-                    // a11y focus ring
+                    "relative outline-none transition-opacity duration-500",
+                    "opacity-0 data-[visible=true]:opacity-100",
                     "focus-visible:ring-2 focus-visible:ring-offset-4",
                     "ring-[#00d3f3]",
                     "ring-offset-[#fafcfc] dark:ring-offset-[#000]"
@@ -423,68 +370,28 @@ export default function TimelineRoadmap({
                 >
                   <div
                     className={cx(
-                      "relative flex items-stretch",
-                      // mobile: single column, keep dot aligned left of card a bit
-                      "flex-col gap-5",
+                      "relative flex items-stretch flex-col gap-5",
                       splitOn,
                       splitAt === "md" ? "md:flex-row md:gap-0" : "lg:flex-row lg:gap-0"
                     )}
                   >
-                    {/* Left side */}
-                    <div className={leftCol}>
-                      <div
-                        className={cx(
-                          "transition-all duration-500 ease-out",
-                          "translate-y-6 scale-[0.98]",
-                          "data-[visible=true]:translate-y-0 data-[visible=true]:scale-100"
-                        )}
-                        data-visible={String(true)}
-                      >
-                        {isLeft ? (
-                          <div className="group">
-                            <div>{card}</div>
-                          </div>
-                        ) : (
-                          <div className={cx("hidden", splitHideLeftOnMobile)} />
-                        )}
-                      </div>
-                    </div>
+                    {/* LEFT: render card only on desktop and only for left items */}
+                    <div className={leftCol}>{isLeft ? card : null}</div>
 
-                    {/* Dot + connector */}
+                    {/* Dot + connector (desktop only) */}
                     <div
                       className={cx(
-                        "absolute left-0 top-6",
-                        splitOn
-                          ? "md:left-1/2 md:-translate-x-1/2"
-                          : "left-0",
-                        splitAt === "lg"
-                          ? "lg:left-1/2 lg:-translate-x-1/2"
-                          : ""
+                        "hidden",
+                        isSplitMd ? "md:block" : "lg:block",
+                        "absolute top-6 left-1/2 -translate-x-1/2"
                       )}
                     >
-                      {/* dotted connector to card (mobile) */}
-                      <div
-                        aria-hidden="true"
-                        className={cx(
-                          "absolute left-3 top-3 h-px w-8",
-                          "bg-transparent",
-                          "md:hidden"
-                        )}
-                        style={{
-                          backgroundImage:
-                            "radial-gradient(circle, rgba(0,0,0,0.25) 1px, transparent 1px)",
-                          backgroundSize: "6px 2px",
-                          backgroundRepeat: "repeat-x",
-                        }}
-                      />
-
                       <div
                         aria-hidden="true"
                         className={cx(
                           "h-6 w-6 rounded-full border-4 shadow-[0_10px_18px_rgba(0,0,0,0.12)]",
                           "border-[#fafcfc] dark:border-[#000]",
-                          "opacity-0 scale-90",
-                          "data-[visible=true]:opacity-100 data-[visible=true]:scale-100",
+                          "opacity-0 scale-90 data-[visible=true]:opacity-100 data-[visible=true]:scale-100",
                           "transition-all duration-500 ease-out"
                         )}
                         data-visible={String(true)}
@@ -499,24 +406,12 @@ export default function TimelineRoadmap({
                       />
                     </div>
 
-                    {/* Right side (mobile always here) */}
+                    {/* RIGHT: mobile ALWAYS; desktop only for right items */}
                     <div className={rightCol}>
-                      <div
-                        className={cx(
-                          "transition-all duration-500 ease-out",
-                          "translate-y-6 scale-[0.98]",
-                          "data-[visible=true]:translate-y-0 data-[visible=true]:scale-100"
-                        )}
-                        data-visible={String(true)}
-                      >
-                        {!isLeft ? (
-                          <div className="group">
-                            <div className="hover:-translate-y-[2px]">{card}</div>
-                          </div>
-                        ) : (
-                          // mobile: always show card on the right side
-                          <div className={cx("md:hidden")}>{card}</div>
-                        )}
+                      {/* ✅ This is the key line: on mobile always show card.
+                          On desktop: show only if it's a right-side item. */}
+                      <div className={cx(isLeft ? "md:hidden lg:hidden" : "")}>
+                        {card}
                       </div>
                     </div>
                   </div>
@@ -534,7 +429,9 @@ export default function TimelineRoadmap({
                       className={cx(
                         "h-px",
                         isSplitMd ? "w-24" : "w-28",
-                        isLeft ? "-translate-x-[calc(50%+12px)]" : "translate-x-[calc(50%+12px)]"
+                        isLeft
+                          ? "-translate-x-[calc(50%+12px)]"
+                          : "translate-x-[calc(50%+12px)]"
                       )}
                       style={{
                         backgroundImage:
@@ -551,7 +448,6 @@ export default function TimelineRoadmap({
           </div>
         </div>
 
-        {/* Footer note (optional, keep it minimal) */}
         <div className="pt-16 md:pt-20 text-center">
           <p className="text-base md:text-lg text-[#2a2a2a]/70 dark:text-[#e5e4e3]/70">
             Excellence is a journey, not a destination.
@@ -564,56 +460,3 @@ export default function TimelineRoadmap({
     </section>
   );
 }
-
-/**
- * Example usage:
- *
- * <TimelineRoadmap
- *   subtitle={
- *     <>
- *       A meticulously crafted journey from fundamentals to expertise.{" "}
- *       <span className="text-[#000] dark:text-[#fafcfc] font-semibold">
- *         Master the language that powers the web.
- *       </span>
- *     </>
- *   }
- *   milestones={[
- *     {
- *       id: "m1",
- *       indexLabel: "01",
- *       eyebrow: "Foundation",
- *       title: "Intro & Setup",
- *       description:
- *         "Install development tools, configure your environment, and understand the JavaScript ecosystem.",
- *       tone: "light",
- *     },
- *     {
- *       id: "m2",
- *       indexLabel: "02",
- *       eyebrow: "Core Concepts",
- *       title: "JavaScript Basics",
- *       description:
- *         "Variables, data types, operators, control flow, functions, and scope.",
- *       tone: "dark",
- *     },
- *     {
- *       id: "m3",
- *       indexLabel: "03",
- *       eyebrow: "Interactive",
- *       title: "DOM Manipulation",
- *       description:
- *         "Select, modify, and create HTML elements dynamically. Handle events and user interactions.",
- *       tone: "light",
- *     },
- *     {
- *       id: "m4",
- *       indexLabel: "04",
- *       eyebrow: "Modern Syntax",
- *       title: "ES6+ Features",
- *       description:
- *         "Arrow functions, destructuring, template literals, classes, modules, and spread operator.",
- *       tone: "accent",
- *     },
- *   ]}
- * />
- */

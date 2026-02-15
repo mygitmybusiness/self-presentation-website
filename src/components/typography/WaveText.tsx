@@ -34,7 +34,7 @@ export default function WaveText({ text, className }: Props) {
         className="
           animate-wavy 
           absolute left-0 top-0
-          text-[#c19bf5] dark:text-[#00d3f3] select-none
+          text-[#00d3f3] dark:text-[#00d3f3] select-none
         "
       >
         {text}

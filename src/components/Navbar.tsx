@@ -64,14 +64,16 @@ export default function Navbar() {
       <nav
         className={[
           "fixed inset-x-0 top-0 z-30",
-          "bg-white/30 dark:bg-black/30",
-          "backdrop-blur-md backdrop-saturate-150",
-          "transition-[background-color,backdrop-filter] duration-300",
-          "border-b border-black/5 dark:border-white/10",
+          // "backdrop-blur-md backdrop-saturate-150",
+          // "lg:transition-[background-color,backdrop-filter] lg:duration-300",
+          // "border-b border-black/5 dark:border-white/10",
         ].join(" ")}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
+        <div className="max-w-7xl mx-auto lg:px-4">
+          <div className={[
+              "flex justify-between h-16 items-center lg:mt-4 px-4 sm:px-6 lg:px-8",
+              "border-b lg:border border-black/5 dark:border-white/10 lg:rounded-full bg-white/90 dark:bg-black/70"
+            ].join(' ')}>
             {/* Logo */}
             <div className="flex-shrink-0 text-2xl font-bold">
               <Link href="/">.folio</Link>
