@@ -1,5 +1,3 @@
-"use client";
-
 import { VerticalTabItem, VerticalTabs } from "@/components/VerticalTabs";
 import CompanyAccordion from "@/components/experience/CompanyAccordion";
 import TimelineRoadmap from "@/components/experience/TimelineRoadmap";

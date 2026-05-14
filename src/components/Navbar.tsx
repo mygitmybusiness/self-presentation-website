@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { HomeIcon } from '@/utils/icons';
 
 const circleVariants = {
   open: {
@@ -31,9 +32,9 @@ export default function Navbar() {
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   const menuItems = [
-    { href: "/", label: "Home" },
+    // { href: "/", label: "Home" },
     { href: "/experience", label: "Experience" },
-    { href: "/technologies", label: "Technologies" },
+    // { href: "/technologies", label: "Technologies" },
     { href: "/contacts", label: "Contacts" },
   ];
 
@@ -69,14 +70,18 @@ export default function Navbar() {
           // "border-b border-black/5 dark:border-white/10",
         ].join(" ")}
       >
-        <div className="max-w-7xl mx-auto lg:px-4">
-          <div className={[
+        <div className="max-w-4xl mx-auto lg:px-4">
+          <div
+            className={[
               "flex justify-between h-16 items-center lg:mt-4 px-4 sm:px-6 lg:px-8",
-              "border-b lg:border border-black/5 dark:border-white/10 lg:rounded-full bg-white/90 dark:bg-black/70"
-            ].join(' ')}>
+              "border-b lg:border border-black/5 dark:border-white/10 lg:rounded-full bg-white/90 dark:bg-black/70",
+            ].join(" ")}
+          >
             {/* Logo */}
             <div className="flex-shrink-0 text-2xl font-bold">
-              <Link href="/">.folio</Link>
+              <Link href="/">
+                <HomeIcon />
+              </Link>
             </div>
 
             {/* Desktop menu */}
