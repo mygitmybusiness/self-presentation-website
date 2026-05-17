@@ -66,43 +66,32 @@ const sections = [
   },
 ];
 
-// Added missing label mapping
-const levelToLabel: Record<number, string> = {
-  90: "Expert",
-  85: "Pro",
-  75: "Strong",
-  40: "Learner",
-};
-
 export default function Skills() {
   return (
     <section
       className={clsx(
-        "w-full space-y-10 bg-gradient-to-b from-white/70 to-white/40 p-6 text-neutral-900 shadow-sm backdrop-blur",
-        "dark:from-neutral-950/80 dark:to-neutral-950/40 dark:text-neutral-50 dark:shadow-lg border-box"
+        "w-full space-y-10 p-6 text-neutral-900 backdrop-blur",
+        "dark:text-neutral-50 border-box"
       )}
     >
       <header className="mb-2 space-y-1 border-b border-neutral-200 pb-4 dark:border-neutral-800">
-        <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">
-          Skills
+        <h1 className="text-xl font-semibold tracking-tight sm:text-4xl">
+        Tech Stack
         </h1>
-        <p className="text-xs text-neutral-500 sm:text-sm dark:text-neutral-400">
-          Every day
-        </p>
       </header>
 
       {sections.map((section, idx) => (
-        <div key={idx} className="space-y-4">
+        <div key={idx} className="mb-2 space-y-4 border-b border-neutral-200 pb-4 dark:border-neutral-800">
           {/* Section header */}
           <div>
             <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
               {section.title}
             </h2>
-            {section.subtitle && (
+            {/* {section.subtitle && (
               <p className="mt-1 text-xs text-neutral-500 sm:text-sm dark:text-neutral-400">
                 {section.subtitle}
               </p>
-            )}
+            )} */}
           </div>
 
           {/* Items Container */}
@@ -121,28 +110,10 @@ export default function Skills() {
 
                   {item.years && (
                     <p className="text-[11px] font-medium uppercase tracking-wide text-neutral-400 sm:text-xs dark:text-neutral-500">
-                      {item.years} {item.years == 1 ? 'year' : 'years'}
+                      Experience: {item.years} {item.years == 1 ? 'year' : 'years'}
                     </p>
                   )}
                 </header>
-
-                {typeof item.level === "number" && (
-                  <div className="mt-2 flex items-center gap-2">
-                    <div className="flex-1 overflow-hidden rounded-full bg-neutral-200/70 dark:bg-neutral-800/80">
-                      <div
-                        className={clsx(
-                          "h-1.5 rounded-full",
-                          "bg-gradient-to-r from-sky-400 via-cyan-400 to-emerald-400",
-                          "dark:from-sky-500 dark:via-cyan-500 dark:to-emerald-500"
-                        )}
-                        style={{ width: `${item.level}%` }}
-                      />
-                    </div>
-                    <span className="shrink-0 text-[11px] font-medium text-neutral-500 dark:text-neutral-400">
-                      {levelToLabel[item.level] || `${item.level}%`}
-                    </span>
-                  </div>
-                )}
               </div>
             ))}
           </div>

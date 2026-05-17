@@ -79,8 +79,8 @@ export default function Navbar() {
           >
             {/* Logo */}
             <div className="flex-shrink-0 text-2xl font-bold">
-              <Link href="/">
-                <HomeIcon />
+              <Link href="/" className="flex items-center">
+                <HomeIcon /><span className="pl-4 relative top-[1px]">Home</span>
               </Link>
             </div>
 
