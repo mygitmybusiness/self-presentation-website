@@ -33,6 +33,15 @@ export default function MainInfo() {
           <p className="text-xl font-bold">Education:</p>
           <span>Masters Degree in <strong className="pb-1 inline-block bg-yellow">Computer Science</strong></span>
         </div>
+        <div className="pt-2">
+          <p className="text-xl font-bold">Languages spoken</p>
+          <ul>
+            <li>English <span>(TEFL, C1 certified)</span></li>
+            <li>Polish <span>(good speaking, great understanding, average writing)</span></li>
+            <li>Ukrainian (native)</li>
+            <li>Russian (trying to forget)</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

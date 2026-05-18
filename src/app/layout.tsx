@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Barlow } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const barlow = Barlow({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "600"], // regular, semibold
+  style: ["normal"],
+  variable: "--font-barlow",
 });
 
 export const metadata: Metadata = {
@@ -25,16 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={`${barlow.variable}`}>
+      <body>
         <Navbar />
         <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 sm:p-20">
           <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
-            <div className="max-w-7xl mx-auto px-2 w-full">
-              {children}
-            </div>
+            <div className="max-w-7xl mx-auto px-2 w-full">{children}</div>
           </main>
         </div>
         <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
