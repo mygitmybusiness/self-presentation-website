@@ -17,7 +17,7 @@ const sections = {
       years: "~2 years"
     },
     {
-      title: "C",
+      title: "C/C++",
       years: "~2 years"
     },
     {
@@ -62,15 +62,19 @@ export default function TechStack() {
       )}
     >
       <header className="mb-2 space-y-1 pb-1">
-        <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">
+        <h3 className="text-xl font-bold tracking-tight">
           Tech Stack
-        </h1>
+        </h3>
       </header>
       <div className="mb-2 space-y-4 pb-4">
         <ul className="flex flex-wrap gap-2">
           {sections.items.map((item, itemIdx) => (
             <li key={itemIdx} className="p-0 border rounded-[3px] border-white outline">
-              <h3 className="text-m relative z-1 font-semibold leading-snug bg-black text-white w-full flex px-2 py-1 rounded-[3px]">{item.title}</h3>
+              <h3 className={clsx(
+                "text-m relative z-1 font-regular leading-snug", 
+                "bg-black text-white w-full flex px-2 py-1",
+                "dark:text-black dark:bg-white"
+              )}>{item.title}</h3>
               {item.years && (
                 <p className="tracking-wide text-black dark:text-white sm:text-s py-1 px-2 pt-2 mt-[-5px] rounded-[3px]">
                   {`${item.years}`}
