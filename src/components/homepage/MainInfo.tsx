@@ -2,25 +2,37 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import TechStack from "./TechStack";
+import clsx from "clsx";
 
 export default function MainInfo() {
   return (
     <div className="flex flex-col md:flex-row gap-8 items-left">
-      <Image className="" alt="blabla" src="/media/snap-sketch.png" width="300" height="300" />
-      <div className="flex flex-col justify-center">
-        <div className="flex items-start justify-between gap-4">
+      <Image className="w-2/5" alt="blabla" src="/media/snap-sketch.png" width="300" height="300" />
+      <div className="flex flex-col justify-center h-max w-3/5">
+        <div className="w-full items-start justify-between gap-4 ">
           <div>
-            <h1 className="text-xl md:text-5xl font-semibold leading-tight flex gap-[10px]">
-              Who am i?
-            </h1>
+            <div className="flex w-full justify-between">
+              <h1 className={clsx(
+                  "text-xl md:text-5xl text-white bg-black dark:text-black dark:bg-white", 
+                  "px-2 font-semibold leading-tight flex gap-[10px] mb-4"
+                )}>
+                Dmytro Deinershtein
+              </h1>
+              <Link href="..." className="w-max rounded-[3px] mb-auto p-4 border dark:text-white text-lx">Download CV</Link>
+            </div>
             <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-300 flex flex-col">
-              <strong>Senior Software Engineer</strong>
-              <span>8 years of experience</span>
-              <span>Front-end</span>
+              <strong>Senior Software Engineer | eCommerce specialist</strong>
+              <span>8 years of experience in multinational teams</span>
+              <span>Certified Front-end developer</span>
             </p>
           </div>
         </div>
-        <Link href="..." className="w-max p-4 border mt-4 text-white text-lx">Download CV</Link>
+        <TechStack />
+        <div className="pt-2">
+          <p className="text-xl font-bold">Education:</p>
+          <span>Masters Degree in <strong className="pb-1 inline-block bg-yellow">Computer Science</strong></span>
+        </div>
       </div>
     </div>
   );
