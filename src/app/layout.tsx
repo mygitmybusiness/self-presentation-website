@@ -29,9 +29,6 @@ export default function RootLayout({
             <div className="max-w-7xl mx-auto px-2 lg:px-0 w-full">{children}</div>
           </main>
         </div>
-        <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-          email: dmytro.deinershtein@gmail.com
-        </footer>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import React, { useEffect, useMemo, useRef } from "react";
 
 type DonutAsciiProps = {
@@ -32,12 +33,11 @@ type DonutAsciiProps = {
  */
 export default function DonutAscii({
   className = "",
-  fps = 40,
+  fps = 20,
   width = 64,
-  height = 64,
+  height = 36,
   scale = 0.16,
-  speed = 1.5,
-  color = "#fff",
+  speed = 2,
   withSurface = true,
 }: DonutAsciiProps) {
   const preRef = useRef<HTMLPreElement | null>(null);
@@ -188,28 +188,24 @@ export default function DonutAscii({
   }, [dims.h, dims.w, fps, scale, speed]);
 
   return (
-    <section className={["w-full", className].filter(Boolean).join(" ")} aria-label="ASCII 3D donut">
-      <div className="max-w-7xl mx-auto px-2 w-full">
+    <section className={["w-full", className].filter(Boolean).join(" ")} aria-hidden="true">
+      <div className="max-w-7xl mx-auto px-2 lg:p-0 w-full overflow-hidden">
         <div
-          className={[
-            "rounded-2xl",
-            "overflow-hidden",
+          className={clsx(
+            "rounded-2xl overflow-hidden",
             withSurface
-              ? "text-[#2a2a2a] dark:bg-[#000] dark:text-[#e5e4e3]"
+              ? "text-white dark:bg-black dark:text-white"
               : "bg-transparent",
-          ].join(" ")}
+          )}
         >
-          <div className="p-4 sm:p-6 flex items-center justify-center">
+          <div className="flex items-center justify-center h-min">
             <pre
               ref={preRef}
-              className={[
-                "select-none",
-                "leading-[0.95]",
-                "font-bold text-[10px] sm:text-[12px] md:text-[14px]",
-                "font-mono text-black dark:text-white",
-                "whitespace-pre",
-              ].join(" ")}
-              // style={{ color }}
+              className={clsx(
+                "select-none max-w-[100vw]",
+                "leading-[0.9] font-bold text-md sm:text-lx md:text-3xl",
+                "font-mono text-neutral-200 dark:text-white whitespace-pre",
+              )}
             />
           </div>
         </div>

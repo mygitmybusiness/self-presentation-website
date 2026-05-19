@@ -1,9 +1,9 @@
-import type { TimelineMilestone } from "@/components/experience/TimelineRoadmap";
+import type { TimelineMilestone } from "@/types/experience";
 
 export const experienceMilestones: TimelineMilestone[] = [
   {
     id: "luxmed",
-    indexLabel: "05",
+    year: "2025",
     eyebrow: "Apr 2025 — Present · Poznań, Poland",
     title: "Senior Frontend Engineer — LUX MED",
     description:
@@ -18,7 +18,7 @@ export const experienceMilestones: TimelineMilestone[] = [
   },
   {
     id: "cloudflight",
-    indexLabel: "04",
+    year: "2023–2025",
     eyebrow: "2023 — 2025 · Poznań, Poland / Remote",
     title: "Senior Frontend Engineer — Cloudflight / Divante",
     description:
@@ -33,7 +33,7 @@ export const experienceMilestones: TimelineMilestone[] = [
   },
   {
     id: "magecom",
-    indexLabel: "03",
+    year: "2022",
     eyebrow: "2022 · Remote",
     title: "Senior Frontend Developer — Magecom",
     description:
@@ -46,7 +46,7 @@ export const experienceMilestones: TimelineMilestone[] = [
   },
   {
     id: "epam",
-    indexLabel: "02",
+    year: "2019–2022",
     eyebrow: "2019 — 2022 · Ukraine / Remote",
     title: "Frontend Engineer — EPAM Systems",
     description:
@@ -59,7 +59,7 @@ export const experienceMilestones: TimelineMilestone[] = [
   },
   {
     id: "mavenecommerce",
-    indexLabel: "01",
+    year: "2018–2019",
     eyebrow: "2018 — 2019 · Ukraine",
     title: "Frontend Developer — MavenEcommerce",
     description:

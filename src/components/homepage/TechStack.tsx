@@ -17,12 +17,12 @@ const sections = {
       years: "~2 years"
     },
     {
-      title: "C/C++",
-      years: "~2 years"
-    },
-    {
       title: "Tailwind CSS",
       years: "5 years"
+    },
+    {
+      title: "Jest",
+      years: "~2 years"
     },
     {
       title: "PHP",
@@ -48,6 +48,10 @@ const sections = {
     {
       title: "CSS (LESS, SASS)",
       years: ">8 years"
+    },
+    {
+      title: "AI neuroslop committer",
+      years: "~30 mins"
     }
   ],
 };
@@ -56,7 +60,7 @@ export default function TechStack() {
   return (
     <section
       className={clsx(
-        "w-full mb-2 space-y-10 text-neutral-900 backdrop-blur",
+        "w-full mb-2 space-y-10 text-black",
         "dark:text-neutral-50 border-box"
       )}
     >

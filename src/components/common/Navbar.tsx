@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { HomeIcon } from '@/utils/icons';
+import { HamburgerIcon, HomeIcon, MenuClose } from '@/utils/icons';
 
 const circleVariants = {
   open: {
@@ -72,11 +72,10 @@ export default function Navbar() {
           <div
             className={[
               "flex justify-between items-center w-max lg:mt-4 p-4 sm:p-6 lg:p-2",
-              "border-b lg:border border-black dark:border-white lg:rounded-[4px]",
-              "bg-white dark:bg-black border-b border-black dark:border-white"
+              "lg:border-b lg:border lg:border-black lg:dark:border-white lg:rounded-[4px]",
+              "lg:bg-white lg:dark:bg-black ml-auto lg:mr-auto"
             ].join(" ")}
           >
-            {/* Desktop menu */}
             <div className="hidden md:flex gap-2">
               {menuItems.map((item) => {
                 const active = pathname === item.href;
@@ -95,8 +94,6 @@ export default function Navbar() {
                 );
               })}
             </div>
-
-            {/* Mobile button */}
             <div className="md:hidden">
               <motion.button
                 onClick={() => setIsOpen((v) => !v)}
@@ -124,29 +121,13 @@ export default function Navbar() {
                     />
                   </svg>
                 ) : (
-                  // Hamburger icon
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
+                  <HamburgerIcon />
                 )}
               </motion.button>
             </div>
           </div>
         </div>
       </nav>
-
-      {/* FULLSCREEN OVERLAY (OUTSIDE NAV) */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: isOpen ? 1 : 0 }}
@@ -159,8 +140,6 @@ export default function Navbar() {
         `}
         aria-hidden="true"
       />
-
-      {/* CIRCLE-CLIP MOBILE MENU (OUTSIDE NAV) */}
       <motion.aside
         id="mobile-drawer"
         role="dialog"
@@ -171,7 +150,7 @@ export default function Navbar() {
         variants={circleVariants}
         className={`
           fixed inset-0 z-50 md:hidden
-          bg-black text-white origin-top-right
+          bg-black dark:bg-white text-white dark:test-black origin-top-right
           ${isOpen ? "pointer-events-auto" : "pointer-events-none"}
         `}
         onClick={() => setIsOpen(false)}
@@ -182,26 +161,12 @@ export default function Navbar() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xl font-bold">.menu</span>
               <button
                 onClick={() => setIsOpen(false)}
                 aria-label="Close menu"
-                className="p-2 rounded-md hover:bg-white/10 transition"
+                className="ml-auto p-2 rounded-md hover:bg-white/10 transition"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <MenuClose/>
               </button>
             </div>
 
@@ -215,7 +180,7 @@ export default function Navbar() {
                     ref={idx === 0 ? firstLinkRef : undefined}
                     className={`block px-4 py-3 rounded-lg transition-colors duration-200 ${
                       active
-                        ? "bg-white/10 text-white"
+                        ? "bg-white text-black dark:bg-black dark:text-white"
                         : "text-white/90 hover:bg-white/10"
                     }`}
                     onClick={() => setIsOpen(false)}
