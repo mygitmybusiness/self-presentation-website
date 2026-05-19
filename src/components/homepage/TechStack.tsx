@@ -56,17 +56,16 @@ export default function TechStack() {
   return (
     <section
       className={clsx(
-        "w-full space-y-10 text-neutral-900 backdrop-blur",
-        "pt-4",
+        "w-full mb-2 space-y-10 text-neutral-900 backdrop-blur",
         "dark:text-neutral-50 border-box"
       )}
     >
-      <header className="mb-2 space-y-1 pb-1">
-        <h3 className="text-xl font-bold tracking-tight">
+      <header className="pb-2 mb-0 space-y-1 pb-1">
+        <h3 className="text-3xl font-bold tracking-tight">
           Tech Stack
         </h3>
       </header>
-      <div className="mb-2 space-y-4 pb-4">
+      <div className="space-y-4">
         <ul className="flex flex-wrap gap-2">
           {sections.items.map((item, itemIdx) => (
             <li key={itemIdx} className="p-0 border rounded-[3px] border-white outline">

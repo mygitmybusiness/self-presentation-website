@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/common/Navbar";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -26,7 +26,7 @@ export default function RootLayout({
         <Navbar />
         <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 sm:p-20">
           <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
-            <div className="max-w-7xl mx-auto px-2 w-full">{children}</div>
+            <div className="max-w-7xl mx-auto px-2 lg:px-0 w-full">{children}</div>
           </main>
         </div>
         <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">

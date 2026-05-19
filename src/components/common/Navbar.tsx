@@ -32,9 +32,8 @@ export default function Navbar() {
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   const menuItems = [
-    // { href: "/", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "/experience", label: "Experience" },
-    // { href: "/technologies", label: "Technologies" },
     { href: "/contacts", label: "Contacts" },
   ];
 
@@ -61,38 +60,31 @@ export default function Navbar() {
 
   return (
     <>
-      {/* TOP NAVBAR */}
       <nav
         className={[
           "fixed inset-x-0 top-0 z-30",
           // "backdrop-blur-md backdrop-saturate-150",
-          // "lg:transition-[background-color,backdrop-filter] lg:duration-300",
-          // "border-b border-black/5 dark:border-white/10",
+          "lg:transition-[background-color,backdrop-filter] lg:duration-300",
+          // "border-b border-black dark:border-white",
         ].join(" ")}
       >
-        <div className="max-w-4xl mx-auto lg:px-4">
+        <div className="max-w-7xl w-full mx-auto">
           <div
             className={[
-              "flex justify-between h-16 items-center lg:mt-4 px-4 sm:px-6 lg:px-8",
-              "border-b lg:border border-black/5 dark:border-white/10 lg:rounded-full bg-white/90 dark:bg-black/70",
+              "flex justify-between items-center w-max lg:mt-4 p-4 sm:p-6 lg:p-2",
+              "border-b lg:border border-black dark:border-white lg:rounded-[4px]",
+              "bg-white dark:bg-black border-b border-black dark:border-white"
             ].join(" ")}
           >
-            {/* Logo */}
-            <div className="flex-shrink-0 text-2xl font-bold">
-              <Link href="/" className="flex items-center">
-                <HomeIcon /><span className="pl-4 relative top-[1px]">Home</span>
-              </Link>
-            </div>
-
             {/* Desktop menu */}
-            <div className="hidden md:flex space-x-6">
+            <div className="hidden md:flex gap-2">
               {menuItems.map((item) => {
                 const active = pathname === item.href;
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`px-6 py-2 rounded-full transition-colors duration-300 ${
+                    className={`px-6 py-2 rounded-[3px] transition-colors duration-300 ${
                       active
                         ? "bg-gray-900 text-white dark:bg-white dark:text-black"
                         : "transition-shadow duration-200 text-gray-700 dark:text-gray-200 hover:shadow-[0_0_0_1px_#000] dark:hover:shadow-[0_0_0_1px_#fff]"
