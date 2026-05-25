@@ -6,53 +6,56 @@ const sections = {
   items: [
     {
       title: "React",
-      years: ">7 years",
+      years: "Expert, 7+ years",
     },
     {
       title: "JavaScript",
-      years: "9 years"
+      years: "Expert, 8 years",
     },
-    {
-      title: "Java",
-      years: "~2 years"
-    },
+    // {
+    //   title: "Java",
+    //   years: "Novice, 2 years",
+    // },
     {
       title: "Tailwind CSS",
-      years: "5 years"
+      years: "Solid, 5 years",
     },
     {
       title: "Jest",
-      years: "~2 years"
+      years: "Solid, 2 years",
     },
     {
       title: "PHP",
-      years: "8 years"
+      years: "Solid knowledge, 8 years",
     },
-    {
-      title: "Node.js",
-      years: "3 years"
-    },
-    {
-      title: "PostgreSQL",
-      years: "3 years"
-    },
+    // {
+    //   title: "Node.js",
+    //   years: "3 years",
+    // },
+    // {
+    //   title: "PostgreSQL",
+    //   years: "3 years",
+    // },
     {
       title: "Docker",
-      years: "~8 years"
+      years: "8+ years",
     },
     {
       title: "GitHub Actions",
-      years: "5 years"
+      years: "Good, 5 years",
     },
-    
     {
       title: "CSS (LESS, SASS)",
-      years: ">8 years"
+      years: "Expert, > 8 years",
     },
     {
-      title: "AI neuroslop committer",
-      years: "~30 mins"
-    }
+      title: "Accessibility",
+      years: "more than 4 years",
+    },
+    // {
+    //   title: "AI neuroslop committer",
+    //   years: "Joke, 30 mins",
+    // },
   ],
 };
 
@@ -65,19 +68,26 @@ export default function TechStack() {
       )}
     >
       <header className="pb-2 mb-0 space-y-1 pb-1">
-        <h3 className="text-3xl font-bold tracking-tight">
-          Tech Stack
+        <h3 className="text-2xl font-bold tracking-tight mb-2">
+          Technologies & programming languages
         </h3>
       </header>
       <div className="space-y-4">
         <ul className="flex flex-wrap gap-2">
           {sections.items.map((item, itemIdx) => (
-            <li key={itemIdx} className="p-0 border rounded-[3px] border-white outline">
-              <h3 className={clsx(
-                "text-m relative z-1 font-regular leading-snug", 
-                "bg-black text-white w-full flex px-2 py-1",
-                "dark:text-black dark:bg-white"
-              )}>{item.title}</h3>
+            <li
+              key={itemIdx}
+              className="p-0 border rounded-[3px] border-white outline"
+            >
+              <p
+                className={clsx(
+                  "text-m relative z-1 font-regular leading-snug",
+                  "bg-black text-white w-full flex px-2 py-1 rounded-[2px]",
+                  "dark:text-black dark:bg-white"
+                )}
+              >
+                {item.title}
+              </p>
               {item.years && (
                 <p className="tracking-wide text-black dark:text-white sm:text-s py-1 px-2 pt-2 mt-[-5px] rounded-[3px]">
                   {`${item.years}`}

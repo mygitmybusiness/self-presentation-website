@@ -3,7 +3,7 @@ import type { TimelineMilestone } from "@/types/experience";
 export const experienceMilestones: TimelineMilestone[] = [
   {
     id: "luxmed",
-    year: "2025",
+    year: "2025 - current",
     eyebrow: "Apr 2025 — Present · Poznań, Poland",
     title: "Senior Frontend Engineer — LUX MED",
     description:

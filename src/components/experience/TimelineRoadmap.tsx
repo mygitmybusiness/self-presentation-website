@@ -54,7 +54,10 @@ function WorkplaceCard({ milestone }: { milestone: TimelineMilestone }) {
         t.card
       )}
     >
-      <p className="text-xs uppercase tracking-wide text-neutral-600 dark:text-neutral-400">
+      <p className={clsx(
+        "text-xs uppercase tracking-wide",
+        t.inverted ? 'text-white dark:text-black' : 'text-neutral-600 dark:text-neutral-400'
+      )}>
         {milestone.eyebrow}
       </p>
       <h4
