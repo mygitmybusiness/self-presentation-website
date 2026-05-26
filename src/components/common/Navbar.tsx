@@ -3,10 +3,11 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { HamburgerIcon, HomeIcon, MenuClose } from '@/utils/icons';
+import { motion, type Variants } from "framer-motion";
+import { HamburgerIcon, MenuClose } from "@/utils/icons";
+import { useTransitionNav } from "@/components/common/TransitionProvider";
 
-const circleVariants = {
+const circleVariants: Variants = {
   open: {
     clipPath: "circle(150% at 100% 0%)",
     transition: {
@@ -29,6 +30,7 @@ const circleVariants = {
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { navigate } = useTransitionNav();
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   const menuItems = [
@@ -36,6 +38,14 @@ export default function Navbar() {
     { href: "/experience", label: "Experience" },
     { href: "/contacts", label: "Contacts" },
   ];
+
+  const onNavigate =
+    (href: string, closeMenu?: boolean) =>
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
+      if (closeMenu) setIsOpen(false);
+      navigate(href);
+    };
 
   // Lock scroll + focus first link + close on Esc
   useEffect(() => {
@@ -83,6 +93,7 @@ export default function Navbar() {
                   <Link
                     key={item.href}
                     href={item.href}
+                    onClick={onNavigate(item.href)}
                     className={`px-6 py-2 rounded-[3px] transition-colors duration-300 ${
                       active
                         ? "bg-gray-900 text-white dark:bg-white dark:text-black"
@@ -183,7 +194,7 @@ export default function Navbar() {
                         ? "bg-white text-black dark:bg-black dark:text-white"
                         : "text-white/90 hover:bg-white/10"
                     }`}
-                    onClick={() => setIsOpen(false)}
+                    onClick={onNavigate(item.href, true)}
                   >
                     {item.label}
                   </Link>

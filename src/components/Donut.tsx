@@ -190,21 +190,14 @@ export default function DonutAscii({
   return (
     <section className={["w-full", className].filter(Boolean).join(" ")} aria-hidden="true">
       <div className="max-w-7xl mx-auto px-2 lg:p-0 w-full overflow-hidden">
-        <div
-          className={clsx(
-            "rounded-2xl overflow-hidden",
-            withSurface
-              ? "text-white dark:bg-black dark:text-white"
-              : "bg-transparent",
-          )}
-        >
+        <div className="overflow-hidden">
           <div className="flex items-center justify-center h-min">
             <pre
               ref={preRef}
               className={clsx(
                 "select-none max-w-[100vw]",
                 "leading-[0.9] font-bold text-md sm:text-lx md:text-3xl",
-                "font-mono text-neutral-200 dark:text-white whitespace-pre",
+                "font-mono text-neutral-200 dark:text-neutral-900 whitespace-pre",
               )}
             />
           </div>

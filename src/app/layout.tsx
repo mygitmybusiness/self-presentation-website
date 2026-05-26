@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Barlow } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
+import PageTransition from "@/components/common/PageTransition";
+import { TransitionProvider } from "@/components/common/TransitionProvider";
 
 const barlow = Barlow({
   subsets: ["latin"],
@@ -23,12 +25,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${barlow.variable}`}>
       <body>
-        <Navbar />
-        <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 sm:p-20">
-          <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
-            <div className="max-w-7xl mx-auto px-2 lg:px-0 w-full">{children}</div>
-          </main>
-        </div>
+        <TransitionProvider>
+          <Navbar />
+          <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 sm:p-20">
+            <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
+              <div className="max-w-7xl mx-auto px-2 lg:px-0 w-full">
+                <PageTransition>{children}</PageTransition>
+              </div>
+            </main>
+          </div>
+        </TransitionProvider>
       </body>
     </html>
   );

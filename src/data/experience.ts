@@ -4,7 +4,7 @@ export const experienceMilestones: TimelineMilestone[] = [
   {
     id: "luxmed",
     year: "2025 - current",
-    eyebrow: "Apr 2025 — Present · Poznań, Poland",
+    eyebrow: "Poznań, Poland · Hybrid",
     title: "Senior Frontend Engineer — LUX MED",
     description:
       "Building and evolving the frontend for a Magento-based medical e-commerce platform, with a focus on appointment booking UX and subscription flows.",
@@ -19,7 +19,7 @@ export const experienceMilestones: TimelineMilestone[] = [
   {
     id: "cloudflight",
     year: "2023–2025",
-    eyebrow: "2023 — 2025 · Poznań, Poland / Remote",
+    eyebrow: "Poznań, Poland · Remote",
     title: "Senior Frontend Engineer — Cloudflight / Divante",
     description:
       "Delivered complex Magento 2 e-commerce solutions, custom widgets, and UX optimizations across production storefronts.",
@@ -34,7 +34,7 @@ export const experienceMilestones: TimelineMilestone[] = [
   {
     id: "magecom",
     year: "2022",
-    eyebrow: "2022 · Remote",
+    eyebrow: "Ukraine · Remote",
     title: "Senior Frontend Developer — Magecom",
     description:
       "Developed and maintained Magento 2 storefronts for international clients, customizing themes and widgets.",
@@ -47,7 +47,7 @@ export const experienceMilestones: TimelineMilestone[] = [
   {
     id: "epam",
     year: "2019–2022",
-    eyebrow: "2019 — 2022 · Ukraine / Remote",
+    eyebrow: "Ukraine · Hybrid",
     title: "Frontend Engineer — EPAM Systems",
     description:
       "Worked on large enterprise applications with a focus on long-term maintainability, scalability, and code quality.",
@@ -60,7 +60,7 @@ export const experienceMilestones: TimelineMilestone[] = [
   {
     id: "mavenecommerce",
     year: "2018–2019",
-    eyebrow: "2018 — 2019 · Ukraine",
+    eyebrow: "Ukraine · On sight",
     title: "Frontend Developer — MavenEcommerce",
     description:
       "Started in e-commerce: layout integration, theme work, UI components, and basic performance optimization.",
