@@ -14,9 +14,9 @@
     "@splinetool/react-spline": "^4.1.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.24",
-    "next": "15.5.0",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "next": "^16.2.6",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "three": "^0.180.0",
     "three-csg-ts": "^3.2.0"
   },
