@@ -25,14 +25,14 @@ export default function MainInfo() {
         <Link
           href="..."
           className={clsx(
-            "flex w-max py-4 px-8 rounded-[4px] bg-white border border-black my-4 mx-auto",
+            "flex w-max py-4 px-8 rounded-[4px] bg-white dark:bg-black dark:text-white border border-black dark:border-white my-4 mx-auto",
             "text-black font-sans font-medium tracking-tight select-none transition-all duration-200",
             // Base State
-            "shadow-[0_4px_0_#000,0_0_0_2px_#fff]",
+            "shadow-[0_4px_0_#000,0_0_0_2px_#fff] dark:shadow-[0_4px_0_#fff,0_0_0_2px_#000]",
             // Hover State (Moves up 2px, shadow grows 2px to anchor the bottom)
-            "hover:-translate-y-[2px] hover:shadow-[0_6px_0_#000,0_0_0_2px_#fff]",
+            "hover:-translate-y-[2px] hover:shadow-[0_6px_0_#000,0_0_0_2px_#fff] dark:hover:shadow-[0_6px_0_#fff,0_0_0_2px_#000]",
             // Active State (Sinks down 4px from base, flattens shadow)
-            "active:translate-y-[4px] active:shadow-[0_0_0_#000,0_0_0_2px_#fff]"
+            "active:translate-y-[4px] active:shadow-[0_0_0_#000,0_0_0_2px_#fff] dark:active:shadow-[0_0_0_#fff,0_0_0_2px_#000]"
           )}
         >
           <span className="font-bold">Download CV</span>
@@ -65,11 +65,11 @@ export default function MainInfo() {
         <Link
           href="..."
           className={clsx(
-            "flex w-max py-4 px-8 rounded-[4px] bg-[#0001] border border-[#0004] my-4",
+            "flex w-max py-4 px-8 rounded-[4px] bg-[#0001] dark:bg-[#fffd] border border-[#0004] dark:border-[#fffd] dark:border-white dark:text-black my-4",
             "text-black font-sans font-medium tracking-tight select-none transition-all duration-200",
-            "shadow-[0_4px_0_#0004,0_0_0_2px_#fff]",
-            "hover:-translate-y-[2px] hover:shadow-[0_6px_0_#0004,0_0_0_2px_#fff]",
-            "active:translate-y-[4px] active:shadow-[0_0_0_#0004,0_0_0_2px_#fff]"
+            "shadow-[0_4px_0_#0004,0_0_0_2px_#fff] dark:shadow-[0_4px_0_#fff9,0_0_0_2px_#000]",
+            "hover:-translate-y-[2px] hover:shadow-[0_6px_0_#0004,0_0_0_2px_#fff] dark:hover:shadow-[0_6px_0_#fff9,0_0_0_2px_#000]",
+            "active:translate-y-[4px] active:shadow-[0_0_0_#0004,0_0_0_2px_#fff] dark:active:shadow-[0_0px_0_#fff9,0_0_0_2px_#000]"
           )}
         >
           <span className="font-bold">Download CV</span>
