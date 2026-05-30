@@ -33,11 +33,11 @@ type DonutAsciiProps = {
  */
 export default function DonutAscii({
   className = "",
-  fps = 20,
+  fps = 30,
   width = 64,
   height = 36,
-  scale = 0.16,
-  speed = 2,
+  scale = 0.15,
+  speed = 0.7,
   withSurface = true,
 }: DonutAsciiProps) {
   const preRef = useRef<HTMLPreElement | null>(null);
@@ -197,7 +197,7 @@ export default function DonutAscii({
               className={clsx(
                 "select-none max-w-[100vw]",
                 "leading-[0.9] font-bold text-md sm:text-lx md:text-3xl",
-                "font-mono text-neutral-200 dark:text-neutral-900 whitespace-pre",
+                "font-mono text-neutral-300 dark:text-neutral-700 whitespace-pre",
               )}
             />
           </div>

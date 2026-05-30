@@ -74,3 +74,23 @@ body {
     border-color: var(--accent);
   }
 }
+
+@keyframes rotate {
+  from { transform: rotate(0deg) translate3d(0, 0, 0); }
+  to { transform: rotate(360deg) translate3d(0, 0, 0); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95); /* Optional: slight scale up for smoothness */
+  }
+  to {
+    /* The opacity will default to what you set in your inline style */
+    opacity: var(--final-opacity); 
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}

@@ -25,8 +25,8 @@ export const contactChannels: ContactChannel[] = [
   },
   {
     label: "Phone",
-    value: "+48 793 698 948",
-    href: "tel:+48793698948",
+    value: "+48 793 *** ***",
+    href: "tel:+48793******",
   },
   {
     label: "Location",

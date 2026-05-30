@@ -18,11 +18,11 @@ export default function ContactPanel() {
       className="relative z-10 w-full max-w-md mx-auto text-center"
       aria-labelledby="contacts-title"
     >
-      <header className="mb-8">
+      <header className="mb-4">
         <h1
           id="contacts-title"
           className={clsx(
-            "text-3xl md:text-4xl font-semibold tracking-tight mb-2",
+            "text-3xl md:text-4xl font-semibold tracking-tight mb-4",
             "text-black dark:text-white"
           )}
         >

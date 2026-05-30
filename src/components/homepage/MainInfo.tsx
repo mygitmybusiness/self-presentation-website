@@ -9,7 +9,7 @@ import SocialLinks from "./SocialLinks";
 
 export default function MainInfo() {
   return (
-    <div className="flex flex-col md:flex-row gap-8 items-left justify-between">
+    <div className="z-2 flex flex-col md:flex-row gap-8 items-left justify-between">
       <div className="lg:w-2/5 lg:items-start lg:justify-between gap-4 ">
         <Image
           className={clsx(

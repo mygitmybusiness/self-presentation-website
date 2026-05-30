@@ -90,18 +90,42 @@ export default function Navbar() {
               {menuItems.map((item) => {
                 const active = pathname === item.href;
                 return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={onNavigate(item.href)}
-                    className={`px-6 py-2 rounded-[3px] transition-colors duration-300 ${
-                      active
-                        ? "bg-gray-900 text-white dark:bg-white dark:text-black"
-                        : "transition-shadow duration-200 text-gray-700 dark:text-gray-200 hover:shadow-[0_0_0_1px_#000] dark:hover:shadow-[0_0_0_1px_#fff]"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
+<Link
+  key={item.href}
+  href={item.href}
+  onClick={onNavigate(item.href)}
+  className={`group relative px-6 py-2 rounded-[3px] transition-colors duration-300 ${
+    active
+      ? "bg-gray-900 text-white dark:bg-white dark:text-black"
+      : "text-gray-700 dark:text-gray-200"
+  }`}
+>
+  {/* The Label Text */}
+  <span className="relative z-10">{item.label}</span>
+
+  {/* The Animated Border SVG (Only renders when link is not active) */}
+  {!active && (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="0"
+        y="0"
+        width="100%"
+        height="100%"
+        rx="3" /* Matches your rounded-[3px] */
+        fill="none"
+        stroke="currentColor" /* Uses text color (black/white) for the border */
+        strokeWidth="3"
+        className="stroke-gray-900 dark:stroke-white transition-all duration-500 ease-in-out
+          [stroke-dasharray:400] 
+          [stroke-dashoffset:400] 
+          group-hover:[stroke-dashoffset:0]"
+      />
+    </svg>
+  )}
+</Link>
                 );
               })}
             </div>
