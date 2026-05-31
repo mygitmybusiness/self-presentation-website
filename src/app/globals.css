@@ -237,3 +237,26 @@ body {
   --nb-w: 5px;
   --nb-h: 2px;
 }
+
+@keyframes keyPress {
+  0% {
+    transform: translateY(0);
+    box-shadow: -3px 4px 0 #000, 0 0 0 2px #fff;
+  }
+
+  10% {
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0 #000, 0 0 0 2px #fff;
+    background: #fdc700;
+  }
+
+  20% {
+    transform: translateY(0);
+    box-shadow: -3px 4px 0 #000, 0 0 0 2px #fff;
+  }
+
+  100% {
+    transform: translateY(0);
+    box-shadow: -3px 4px 0 #000, 0 0 0 2px #fff;
+  }
+}

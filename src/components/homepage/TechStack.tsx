@@ -73,7 +73,7 @@ export default function TechStack() {
         </h3>
       </header>
       <div className="space-y-4">
-        <ul className="flex flex-col gap-1">
+        <ul className="flex flex-wrap gap-x-2 gap-y-1 antialiased">
           {sections.items.map((item, itemIdx) => (
             <li
               key={itemIdx}
