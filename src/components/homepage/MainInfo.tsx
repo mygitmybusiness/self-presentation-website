@@ -19,6 +19,7 @@ export default function MainInfo() {
           style={{ objectFit: "contain" }}
           alt="blabla"
           src="/media/my-photo.jpeg"
+          loading="eager"
           width={400}
           height={400}
         />

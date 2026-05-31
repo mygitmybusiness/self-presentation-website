@@ -6,11 +6,11 @@ const sections = {
   items: [
     {
       title: "React",
-      years: "Expert, 7+ years",
+      years: "7+ years",
     },
     {
       title: "JavaScript",
-      years: "Expert, 8 years",
+      years: "8 years",
     },
     // {
     //   title: "Java",
@@ -18,16 +18,16 @@ const sections = {
     // },
     {
       title: "Tailwind CSS",
-      years: "Solid, 5 years",
+      years: "5 years",
     },
     {
       title: "Jest",
-      years: "Solid, 2 years",
+      years: "2 years",
     },
-    {
-      title: "PHP",
-      years: "Solid knowledge, 8 years",
-    },
+    // {
+    //   title: "PHP",
+    //   years: "Solid knowledge, 8 years",
+    // },
     // {
     //   title: "Node.js",
     //   years: "3 years",
@@ -42,11 +42,11 @@ const sections = {
     },
     {
       title: "GitHub Actions",
-      years: "Good, 5 years",
+      years: "5+ years",
     },
     {
       title: "CSS (LESS, SASS)",
-      years: "Expert, > 8 years",
+      years: "8 years",
     },
     {
       title: "Accessibility",
@@ -73,23 +73,23 @@ export default function TechStack() {
         </h3>
       </header>
       <div className="space-y-4">
-        <ul className="flex flex-wrap gap-2">
+        <ul className="flex flex-col gap-1">
           {sections.items.map((item, itemIdx) => (
             <li
               key={itemIdx}
-              className="p-0 border rounded-[3px] border-white outline"
+              className="flex gap-1 w-max"
             >
               <p
                 className={clsx(
-                  "text-m relative z-1 font-regular leading-snug",
-                  "bg-black text-white w-full flex px-2 py-1 rounded-[2px]",
-                  "dark:text-black dark:bg-white"
+                  "text-m relative z-1 font-regular leading-dot pr-8 rounded-[4px]",
+                  "bg-black text-white w-full flex px-2 py-1",
+                  "dark:text-black dark:bg-white items-center justify-center nebo nebo--br puzzle-left"
                 )}
               >
                 {item.title}
               </p>
               {item.years && (
-                <p className="tracking-wide text-black dark:text-white sm:text-s py-1 px-2 pt-2 mt-[-5px] rounded-[3px]">
+                <p className="text-black bg-yellow-400 dark:text-white sm:text-s py-1 px-2 min-w-max rounded-[4px] pr-4 nebo nebo--tl puzzle-right pl-8 -ml-[22px]">
                   {`${item.years}`}
                 </p>
               )}

@@ -17,7 +17,7 @@ const Circles = () => {
                     style={{ 
                         width: `${sizePercent}%`, 
                         height: `${sizePercent}%`,
-                        borderColor: `rgba(0,0,0, ${sizePercent})`,
+                        borderColor: `rgba(0,0,0, ${sizePercent}) dark:rgba(255,255,255, ${sizePercent})`,
                         right: (i > (numberOfCircles / 2)) ? -((100 / numberOfCircles) * (i - (numberOfCircles / 2))) * 1 + 'px' : -i + 'px',
                         
                         ['--final-opacity' as any]: finalOpacity, 
@@ -27,6 +27,7 @@ const Circles = () => {
                 />
             );
         }
+
         return elements;
     };
 
