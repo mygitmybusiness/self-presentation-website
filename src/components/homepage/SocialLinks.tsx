@@ -30,7 +30,7 @@ export default function SocialLinks() {
           href={social.href}
           target="_blank"
           rel="noopener noreferrer"
-          className={"block tracking-tight select-none transition-all duration-200 dark:invert hover:-translate-y-[2px] active:translate-y-[4px]"}
+          className={"block tracking-tight select-none transition-all duration-200 dark:invert hover:-translate-y-[2px] active:translate-y-[2px]"}
           aria-label={social.name}
         >
           {social.icon}

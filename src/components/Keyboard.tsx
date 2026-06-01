@@ -8,7 +8,8 @@ interface KeyProps {
 const Key = ({ letter, timeout }:KeyProps) => {
   return (
     <div className={clsx(
-        "flex w-max py-3 px-6 rounded-[4px] bg-white dark:bg-black dark:text-white border border-black dark:border-white mx-auto",
+        "flex w-max py-3 px-6 rounded-[2px] bg-white dark:bg-black dark:text-white",
+        "border border-black dark:border-white mx-auto",
         "text-black font-sans font-medium tracking-tight select-none transition-all",
         // Base State
         "shadow-[4px_4px_0_#000,0_0_0_2px_#fff] dark:shadow-[px_4px_0_#fff,0_0_0_2px_#000]",
@@ -17,7 +18,7 @@ const Key = ({ letter, timeout }:KeyProps) => {
         animation: `keyPress ${timeout}ms infinite cubic-bezier(0.645, 0.045, 0.355, 1)`
     }}
     >
-      <span className="font-bold text-2xl">{letter}</span>
+      <span className="font-bold text-2xl opacity-20">{letter}</span>
     </div>
   );
 };

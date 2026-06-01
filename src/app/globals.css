@@ -260,3 +260,27 @@ body {
     box-shadow: -3px 4px 0 #000, 0 0 0 2px #fff;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  @keyframes keyPress {
+    0% {
+      transform: translateY(0);
+      box-shadow: -3px 4px 0 #b1b1b1, 0 0 0 2px #000;
+    }
+  
+    10% {
+      transform: translateY(4px);
+      box-shadow: 0px 0px 0 #b1b1b1, 0 0 0 2px #000;
+    }
+  
+    20% {
+      transform: translateY(0);
+      box-shadow: -3px 4px 0 #b1b1b1, 0 0 0 2px #000;
+    }
+  
+    100% {
+      transform: translateY(0);
+      box-shadow: -3px 4px 0 #b1b1b1, 0 0 0 2px #000;
+    }
+  }  
+}

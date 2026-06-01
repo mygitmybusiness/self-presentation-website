@@ -82,7 +82,7 @@ export default function Navbar() {
           <div
             className={[
               "flex justify-between items-center w-max lg:mt-4 p-4 sm:p-6 lg:p-2",
-              "lg:border-b lg:border lg:border-black lg:dark:border-white lg:rounded-[4px]",
+              "lg:border-b lg:border lg:border-black lg:dark:border-white lg:rounded-[2px]",
               "lg:bg-white lg:dark:bg-black ml-auto lg:mr-auto"
             ].join(" ")}
           >

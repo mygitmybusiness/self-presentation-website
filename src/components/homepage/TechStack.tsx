@@ -81,15 +81,15 @@ export default function TechStack() {
             >
               <p
                 className={clsx(
-                  "text-m relative z-1 font-regular leading-dot pr-8 rounded-[4px]",
+                  "text-m relative z-1 font-bold rounded-[2px]",
                   "bg-black text-white w-full flex px-2 py-1",
-                  "dark:text-black dark:bg-white items-center justify-center nebo nebo--br puzzle-left"
+                  "dark:text-black dark:bg-white items-center justify-center"
                 )}
               >
                 {item.title}
               </p>
               {item.years && (
-                <p className="text-black bg-yellow-400 dark:text-white sm:text-s py-1 px-2 min-w-max rounded-[4px] pr-4 nebo nebo--tl puzzle-right pl-8 -ml-[22px]">
+                <p className="text-black dark:text-white border-[1px] sm:text-s py-1 px-2 min-w-max rounded-[2px]">
                   {`${item.years}`}
                 </p>
               )}
