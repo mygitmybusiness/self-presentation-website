@@ -33,8 +33,8 @@ function StackPill({ label }: { label: string }) {
       <span
         className={clsx(
           "text-m relative z-1 font-regular leading-snug",
-          "bg-black text-white flex px-2 py-1",
-          "dark:text-black dark:bg-white"
+          "bg-white text-black flex px-2 py-1",
+          "dark:text-white dark:bg-black"
         )}
       >
         {label}
@@ -104,7 +104,7 @@ export default function TimelineRoadmap({
   return (
     <section
       className={clsx(
-        "w-full mb-2 text-neutral-900 dark:text-neutral-50",
+        "w-full mb-2 text-neutral-900 dark:text-neutral-50 z-1",
         className
       )}
     >
@@ -128,7 +128,7 @@ export default function TimelineRoadmap({
                 className={clsx(
                   "sticky top-20 md:top-24 z-10",
                   "text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight",
-                  "py-4 md:py-0 md:pb-24",
+                  "py-4 md:py-0 md:pb-9",
                   "text-black dark:text-white"
                 )}
               >

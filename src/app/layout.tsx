@@ -27,7 +27,7 @@ export default function RootLayout({
       <body>
         <TransitionProvider>
           <Navbar />
-          <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 sm:p-20">
+          <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen pb-20 gap-16 sm:p-6 lg:p-20">
             <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-full">
               <div className="max-w-7xl mx-auto px-2 lg:px-0 w-full">
                 <PageTransition>{children}</PageTransition>

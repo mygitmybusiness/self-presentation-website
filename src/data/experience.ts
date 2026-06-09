@@ -8,7 +8,7 @@ export const experienceMilestones: TimelineMilestone[] = [
     title: "Senior Frontend Engineer — LUX MED",
     description:
       "Building and evolving the frontend for a Magento-based medical e-commerce platform, with a focus on appointment booking UX and subscription flows.",
-    stack: ["TypeScript", "React", "Next.js", "Tailwind CSS", "WCAG 2.2"],
+    stack: ["JavaScript", "PHP", ".NET", "CSS", "Accessibility", 'SQL', 'Docker', 'Git'],
     achievements: [
       "Redesigned core doctor-appointment search widgets for performance and accessibility.",
       "Improved plan comparison components (e.g. Standard and Senior Premium packages).",

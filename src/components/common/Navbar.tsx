@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, type Variants } from "framer-motion";
 import { HamburgerIcon, MenuClose } from "@/utils/icons";
 import { useTransitionNav } from "@/components/common/TransitionProvider";
+import clsx from "clsx";
 
 const circleVariants: Variants = {
   open: {
@@ -34,8 +35,9 @@ export default function Navbar() {
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   const menuItems = [
-    { href: "/", label: "Home" },
+    { href: "/", label: "About me" },
     { href: "/experience", label: "Experience" },
+    { href: "/portfolio", label: "Portfolio" },
     { href: "/contacts", label: "Contacts" },
   ];
 
@@ -83,49 +85,49 @@ export default function Navbar() {
             className={[
               "flex justify-between items-center w-max lg:mt-4 p-4 sm:p-6 lg:p-2",
               "lg:border-b lg:border lg:border-black lg:dark:border-white lg:rounded-[2px]",
-              "lg:bg-white lg:dark:bg-black ml-auto lg:mr-auto"
+              "lg:bg-white lg:dark:bg-black ml-auto lg:mr-auto",
             ].join(" ")}
           >
             <div className="hidden md:flex gap-2">
               {menuItems.map((item) => {
                 const active = pathname === item.href;
                 return (
-<Link
-  key={item.href}
-  href={item.href}
-  onClick={onNavigate(item.href)}
-  className={`group relative px-6 py-2 rounded-[3px] transition-colors duration-300 ${
-    active
-      ? "bg-gray-900 text-white dark:bg-white dark:text-black"
-      : "text-gray-700 dark:text-gray-200"
-  }`}
->
-  {/* The Label Text */}
-  <span className="relative z-10">{item.label}</span>
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={onNavigate(item.href)}
+                    className={`group relative px-6 py-2 transition-colors duration-300 ${
+                      active
+                        ? "bg-gray-900 text-white dark:bg-white dark:text-black"
+                        : "text-gray-700 dark:text-gray-200"
+                    }`}
+                  >
+                    {/* The Label Text */}
+                    <span className="relative z-10">{item.label}</span>
 
-  {/* The Animated Border SVG (Only renders when link is not active) */}
-  {!active && (
-    <svg
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="0"
-        y="0"
-        width="100%"
-        height="100%"
-        rx="3" /* Matches your rounded-[3px] */
-        fill="none"
-        stroke="currentColor" /* Uses text color (black/white) for the border */
-        strokeWidth="3"
-        className="stroke-gray-900 dark:stroke-white transition-all duration-500 ease-in-out
-          [stroke-dasharray:400] 
-          [stroke-dashoffset:400] 
-          group-hover:[stroke-dashoffset:0]"
-      />
-    </svg>
-  )}
-</Link>
+                    {/* The Animated Border SVG (Only renders when link is not active) */}
+                    {!active && (
+                      <svg
+                        className="absolute inset-0 w-full h-full pointer-events-none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          x="0"
+                          y="0"
+                          width="100%"
+                          height="100%"
+                          rx="0"
+                          fill="none"
+                          stroke="currentColor" /* Uses text color (black/white) for the border */
+                          strokeWidth="3"
+                          className={clsx("stroke-gray-900 dark:stroke-white transition-all duration-500 ease-in-out",
+                                     "[stroke-dasharray:400] ",
+                                     "[stroke-dashoffset:400] ",
+                                     "group-hover:[stroke-dashoffset:0]")}
+                        />
+                      </svg>
+                    )}
+                  </Link>
                 );
               })}
             </div>
@@ -201,7 +203,7 @@ export default function Navbar() {
                 aria-label="Close menu"
                 className="ml-auto p-2 rounded-md hover:bg-white/10 transition"
               >
-                <MenuClose/>
+                <MenuClose />
               </button>
             </div>
 
