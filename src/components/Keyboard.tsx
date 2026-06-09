@@ -18,20 +18,21 @@ const Key = ({ letter, timeout }:KeyProps) => {
         animation: `keyPress ${timeout}ms infinite cubic-bezier(0.645, 0.045, 0.355, 1)`
     }}
     >
-      <span className="font-bold text-2xl opacity-20">{letter}</span>
+      <span className="font-bold text-2xl w-max opacity-100">{letter}</span>
     </div>
   );
 };
 
 const Keyboard = () => {
   const keys: string[][] = [
+    ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '+'],
     ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-    ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+    ['caps lock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
     ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',',]
   ];
 
   return (
-    <div className="fixed max-w-[100vw] top-[50vh] opacity-5 flex flex-col items-center p-4 max-w-xl mx-auto gap-3 scale-800 rotate-x-45 -rotate-z-35 rotate-y-10 translate-x-[-50%] max-w-[100vw] events-none">
+    <div className="fixed max-w-[100vw] top-[50vh] left-[30vw] translate-[-50%] opacity-5 flex flex-col items-center p-4 max-w-xl mx-auto gap-3 scale-500 rotate-x-45 -rotate-z-35 rotate-y-10 translate-x-[-50%] max-w-[100vw] events-none">
       {keys.map((row, rowIndex) => (
         <div key={rowIndex} className="flex w-full gap-2" style={{
             paddingLeft: rowIndex * 40 + 'px',

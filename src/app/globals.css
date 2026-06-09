@@ -244,13 +244,12 @@ body {
     box-shadow: -3px 4px 0 #000, 0 0 0 2px #fff;
   }
 
-  10% {
+  1% {
     transform: translateY(4px);
     box-shadow: 0px 0px 0 #000, 0 0 0 2px #fff;
-    background: #fdc700;
   }
 
-  20% {
+  5% {
     transform: translateY(0);
     box-shadow: -3px 4px 0 #000, 0 0 0 2px #fff;
   }
@@ -283,4 +282,11 @@ body {
       box-shadow: -3px 4px 0 #b1b1b1, 0 0 0 2px #000;
     }
   }  
+}
+
+.dotted-bg {
+  background: transparent;
+  background-image: radial-gradient(#c1c1c1 1px, transparent 0);
+  background-size:30px 30px;
+  background-position: 0;
 }
