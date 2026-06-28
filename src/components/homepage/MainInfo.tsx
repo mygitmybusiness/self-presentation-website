@@ -9,20 +9,20 @@ import SocialLinks from "./SocialLinks";
 
 export default function MainInfo() {
   return (
-    <div className="z-2 flex flex-col md:flex-row gap-8 items-left justify-between">
-      <div className="lg:w-2/5 lg:items-start lg:justify-between gap-4 ">
-        <div className="max-w-[250px] lg:ml-auto lg:mr-8">
+    <div className="z-2 flex flex-col md:flex-row md:gap-8 items-left justify-between">
+      {/* <div className="lg:w-2/5 lg:items-start lg:justify-between gap-4 ">
+        <div className="lg:ml-auto lg:mr-8">
           <Image
             className={clsx(
-              "mb-4 border rounded-[2px] ml-auto h-[350px]",
-              "outline outline-2 outline-offset-2 outline-black dark:outline-white"
+              "mb-4 lg:border md:rounded-[2px] ml-auto w-full md:h-[650px]",
+              "md:outline md:outline-2 outline-offset-2 md:outline-black dark:outline-white"
             )}
             style={{ objectFit: "cover" }}
             alt="blabla"
             src="/media/my-photo.jpeg"
             loading="eager"
-            width={300}
-            height={400}
+            width={250}
+            height={650}
           />
           <Link
             href="..."
@@ -40,7 +40,7 @@ export default function MainInfo() {
             <span className="font-bold">Download CV</span>
           </Link>
         </div>
-      </div>
+      </div> */}
       <div className="flex flex-col justify-center w-full lg:h-max lg:w-3/5">
         <div className="w-full">
           <div className="flex flex-col">
@@ -63,7 +63,9 @@ export default function MainInfo() {
             <p>Certified Front-end developer, eCommerce specialist</p>
           </div>
         </div>
+        <div className="mx-auto my-4 md:hidden block w-[100px] h-[1px] border-b-2 border-black dark:border-white"></div>
         <TechStack />
+        <div className="mx-auto my-4 md:hidden block w-[100px] h-[1px] border-b-2 border-black dark:border-white"></div>
         <Education />
         <Link
           href="..."
